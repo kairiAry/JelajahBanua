@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jelajah_banua/main.dart';
 
@@ -32,5 +33,23 @@ void main() {
 
     expect(find.text('Destinasi Favorit'), findsOneWidget);
     expect(find.text('Pulau Samber Gelap'), findsOneWidget);
+  });
+
+  testWidgets('universal search finds warung makan across categories', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MyApp());
+
+    // Select "Alam" category first
+    await tester.tap(find.text('Alam'));
+    await tester.pumpAndSettle();
+
+    // Type "warung makan" in the universal search field
+    await tester.enterText(find.byType(TextField).first, 'warung makan');
+    await tester.pumpAndSettle();
+
+    // Verify Warung "Dina" Wasaka is visible even though Alam was selected
+    expect(find.text('Warung "Dina" Wasaka'), findsOneWidget);
+    expect(find.text('Hasil Pencarian (1)'), findsOneWidget);
   });
 }

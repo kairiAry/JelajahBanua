@@ -36,7 +36,7 @@ const _destinations = <Destination>[
     location: 'Martapura',
     rating: '4.8',
     imageUrl: 'assets/images/lok_baintan.jpg',
-    description: 'Rasakan tradisi jual beli di atas Sungai Martapura. Susuri perahu penuh hasil bumi sambil menikmati kehangatan pagi dan keramahan warga Banua.',
+    description: 'Rasakan tradisi jual beli di atas Sungai Martapura. Susuri perahu penuh hasil bumi dan aneka kuliner makanan tradisional Banjar sambil menikmati kehangatan pagi dan keramahan warga Banua.',
   ),
   Destination(
     name: 'Bukit Kiram',
@@ -204,7 +204,7 @@ const _destinations = <Destination>[
     location: 'Banjarmasin',
     rating: '4.7',
     imageUrl: 'assets/images/pasar_terapung_kuin.jpg',
-    description: 'Saksikan kehidupan sungai Banjarmasin dan tradisi pasar terapung yang berlangsung di atas jukung.',
+    description: 'Saksikan kehidupan sungai Banjarmasin, kuliner jajanan tradisional, dan tradisi pasar terapung yang berlangsung di atas jukung.',
   ),
   Destination(
     name: 'Makam Syekh Muhammad Arsyad Al-Banjari (Datu Kalampayan)',
@@ -268,7 +268,7 @@ const _destinations = <Destination>[
     location: 'Banjarbaru',
     rating: '2.9',
     imageUrl: 'assets/images/wasaka.png',
-    description: 'Nikmati berbagai hidangan lezat di warung "Dina" Wasaka yang terletak di Banjarbaru.',
+    description: 'Nikmati sajian warung makan dan aneka kuliner khas Banjar dengan hidangan lezat di warung makan "Dina" Wasaka, Banjarbaru.',
   ),
 ];
 
@@ -396,8 +396,104 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _searchController = TextEditingController();
   String _selectedCategory = 'Semua';
   String _searchQuery = '';
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _showFilterModal() {
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            return SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 40,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE0E0E0),
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        const Text(
+                          'Filter Kategori',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: _deepForest,
+                          ),
+                        ),
+                        const Spacer(),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedCategory = 'Semua';
+                            });
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            'Reset',
+                            style: TextStyle(color: _forest, fontSize: 12),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: ['Semua', 'Alam', 'Budaya', 'Kuliner', 'Sejarah']
+                          .map((cat) {
+                        final isSel = _selectedCategory == cat;
+                        return ChoiceChip(
+                          label: Text(cat),
+                          selected: isSel,
+                          selectedColor: _mint,
+                          labelStyle: TextStyle(
+                            color: isSel ? _forest : _deepForest,
+                            fontWeight:
+                                isSel ? FontWeight.w700 : FontWeight.w500,
+                            fontSize: 11,
+                          ),
+                          onSelected: (selected) {
+                            setState(() {
+                              _selectedCategory = cat;
+                            });
+                            Navigator.pop(context);
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 
   final _categories = const [
     ('Alam', Icons.landscape_outlined, _mint, _forest),
@@ -413,14 +509,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final cleanQuery = _searchQuery.trim().toLowerCase();
+    final isSearching = cleanQuery.isNotEmpty;
+    final queryWords =
+        cleanQuery.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+
     final visibleDestinations = _destinations.where((destination) {
+      if (isSearching) {
+        // Universal search: searches across ALL categories regardless of current category filter
+        final searchableText = [
+          destination.name,
+          destination.category,
+          destination.location,
+          destination.description,
+          if (destination.category == 'Kuliner')
+            'warung makan tempat makan resto rumah makan kuliner makanan hidangan',
+        ].join(' ').toLowerCase();
+
+        return searchableText.contains(cleanQuery) ||
+            (queryWords.isNotEmpty &&
+                queryWords.every((word) => searchableText.contains(word)));
+      }
+
       final matchesCategory =
           _selectedCategory == 'Semua' ||
           destination.category == _selectedCategory;
-      final matchesSearch = destination.name.toLowerCase().contains(
-        _searchQuery.toLowerCase(),
-      );
-      return matchesCategory && matchesSearch;
+      return matchesCategory;
     }).toList();
 
     return CustomScrollView(
@@ -468,7 +582,15 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 18),
                   SearchField(
                     hintText: 'Cari destinasi impianmu...',
+                    controller: _searchController,
                     onChanged: (value) => setState(() => _searchQuery = value),
+                    onClear: () {
+                      setState(() {
+                        _searchController.clear();
+                        _searchQuery = '';
+                      });
+                    },
+                    onFilterTap: _showFilterModal,
                   ),
                   const SizedBox(height: 16),
                   SingleChildScrollView(
@@ -480,6 +602,8 @@ class _HomePageState extends State<HomePage> {
                         return GestureDetector(
                           onTap: () {
                             setState(() {
+                              _searchController.clear();
+                              _searchQuery = '';
                               _selectedCategory = selected ? 'Semua' : name;
                             });
                           },
@@ -521,40 +645,89 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 19),
                   Row(
                     children: [
-                      const Text(
-                        'Rekomendasi Wisata',
-                        style: TextStyle(
+                      Text(
+                        isSearching
+                            ? 'Hasil Pencarian (${visibleDestinations.length})'
+                            : (_selectedCategory == 'Semua'
+                                ? 'Rekomendasi Wisata'
+                                : 'Wisata $_selectedCategory'),
+                        style: const TextStyle(
                           color: _deepForest,
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                       const Spacer(),
-                      TextButton(
-                        onPressed: widget.onOpenSaved,
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size.zero,
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        ),
-                        child: const Text(
-                          'Lihat semua',
-                          style: TextStyle(
-                            color: _forest,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
+                      if (!isSearching)
+                        TextButton(
+                          onPressed: widget.onOpenSaved,
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: const Text(
+                            'Lihat semua',
+                            style: TextStyle(
+                              color: _forest,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        )
+                      else
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _searchController.clear();
+                              _searchQuery = '';
+                            });
+                          },
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: const Text(
+                            'Reset pencarian',
+                            style: TextStyle(
+                              color: _forest,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
                     ],
                   ),
                   if (visibleDestinations.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 28),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 36),
                       child: Center(
-                        child: Text(
-                          'Destinasi tidak ditemukan',
-                          style: TextStyle(color: _muted),
+                        child: Column(
+                          children: [
+                            const Icon(
+                              Icons.search_off_rounded,
+                              size: 44,
+                              color: _muted,
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'Destinasi tidak ditemukan',
+                              style: TextStyle(
+                                color: _deepForest,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              isSearching
+                                  ? 'Tidak ada hasil untuk "$_searchQuery". Coba kata kunci seperti "warung", "pantai", atau nama daerah.'
+                                  : 'Belum ada destinasi untuk kategori ini.',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(color: _muted, fontSize: 11),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -593,11 +766,17 @@ class SearchField extends StatelessWidget {
   const SearchField({
     required this.hintText,
     required this.onChanged,
+    this.controller,
+    this.onClear,
+    this.onFilterTap,
     super.key,
   });
 
   final String hintText;
   final ValueChanged<String> onChanged;
+  final TextEditingController? controller;
+  final VoidCallback? onClear;
+  final VoidCallback? onFilterTap;
 
   @override
   Widget build(BuildContext context) {
@@ -615,6 +794,7 @@ class SearchField extends StatelessWidget {
           const SizedBox(width: 6),
           Expanded(
             child: TextField(
+              controller: controller,
               onChanged: onChanged,
               style: const TextStyle(fontSize: 11, color: _deepForest),
               decoration: InputDecoration(
@@ -625,10 +805,17 @@ class SearchField extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 9),
+          if (controller != null && controller!.text.isNotEmpty)
+            IconButton(
+              onPressed: onClear,
+              icon: const Icon(Icons.close_rounded, size: 16, color: _muted),
+              visualDensity: VisualDensity.compact,
+              tooltip: 'Hapus pencarian',
+            ),
+          const SizedBox(width: 4),
           Container(width: 1, height: 22, color: const Color(0xFFE8ECE6)),
           IconButton(
-            onPressed: () {},
+            onPressed: onFilterTap ?? () {},
             icon: const Icon(Icons.tune, size: 17, color: _forest),
             visualDensity: VisualDensity.compact,
             tooltip: 'Filter',
@@ -1115,13 +1302,25 @@ class _SavedPageState extends State<SavedPage> {
 
   @override
   Widget build(BuildContext context) {
-    final filtered = widget.destinations
-        .where(
-          (destination) => destination.name.toLowerCase().contains(
-            _searchQuery.toLowerCase(),
-          ),
-        )
-        .toList();
+    final cleanQuery = _searchQuery.trim().toLowerCase();
+    final queryWords =
+        cleanQuery.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+
+    final filtered = widget.destinations.where((destination) {
+      if (cleanQuery.isEmpty) return true;
+      final searchableText = [
+        destination.name,
+        destination.category,
+        destination.location,
+        destination.description,
+        if (destination.category == 'Kuliner')
+          'warung makan tempat makan resto rumah makan kuliner makanan hidangan',
+      ].join(' ').toLowerCase();
+
+      return searchableText.contains(cleanQuery) ||
+          (queryWords.isNotEmpty &&
+              queryWords.every((word) => searchableText.contains(word)));
+    }).toList();
 
     return SafeArea(
       child: Padding(
