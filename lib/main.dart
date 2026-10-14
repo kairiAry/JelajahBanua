@@ -35,7 +35,7 @@ const _destinations = <Destination>[
     category: 'Budaya',
     location: 'Martapura',
     rating: '4.8',
-    imageUrl: 'https://images.unsplash.com/photo-1540611025311-01df3cef54b5?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/lok_baintan.jpg',
     description: 'Rasakan tradisi jual beli di atas Sungai Martapura. Susuri perahu penuh hasil bumi sambil menikmati kehangatan pagi dan keramahan warga Banua.',
   ),
   Destination(
@@ -43,7 +43,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Karang Intan',
     rating: '4.8',
-    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/kiram.jpeg',
     description: 'Hamparan perbukitan hijau dan udara segar menjadikan Bukit Kiram tempat sempurna untuk melepas penat dan menikmati panorama alam.',
   ),
   Destination(
@@ -51,7 +51,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Kotabaru',
     rating: '4.9',
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/samber_gelap.jpg',
     description: 'Nikmati pasir putih, air laut sebening kristal, dan suasana pulau tropis yang menenangkan di salah satu permata pesisir Kalimantan Selatan.',
   ),
   Destination(
@@ -59,7 +59,7 @@ const _destinations = <Destination>[
     category: 'Sejarah',
     location: 'Banjarmasin',
     rating: '4.7',
-    imageUrl: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/masjid_sultan_suriansyah.jpg',
     description: 'Jelajahi salah satu masjid tertua di Kalimantan dengan arsitektur tradisional Banjar yang kaya akan nilai sejarah dan budaya.',
   ),
   Destination(
@@ -67,7 +67,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Mandiangin',
     rating: '4.6',
-    imageUrl: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/tahura.jpg',
     description: 'Nikmati panorama perbukitan berhutan yang hijau dan diselimuti kabut pagi dari salah satu titik pandang terbaik di Tahura Sultan Adam.',
   ),
   Destination(
@@ -75,7 +75,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Tiwingan Lama',
     rating: '4.8',
-    imageUrl: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/matang_kaladan.jpeg',
     description: 'Saksikan pemandangan megah Waduk Riam Kanan dan pulau-pulau kecil berwarna hijau dari puncak Bukit Matang Kaladan.',
   ),
   Destination(
@@ -83,7 +83,7 @@ const _destinations = <Destination>[
     category: 'Budaya',
     location: 'Hulu Sungai Selatan',
     rating: '4.9',
-    imageUrl: 'https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/loksado.jpg',
     description: 'Rasakan serunya menyusuri sungai berbatu dengan rakit bambu, dikelilingi rimbunnya hutan Pegunungan Meratus.',
   ),
   Destination(
@@ -91,7 +91,7 @@ const _destinations = <Destination>[
     category: 'Budaya',
     location: 'Banjarmasin',
     rating: '4.7',
-    imageUrl: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/kampung_sasirangan.jpeg',
     description: 'Jelajahi kampung tepi sungai yang penuh warna dan lihat para perajin membuat kain Sasirangan khas Banjar.',
   ),
   Destination(
@@ -99,15 +99,15 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Tanah Bumbu',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/angsana.jpg',
     description: 'Bersantai di pantai berpasir putih dan jelajahi terumbu karang berwarna-warni yang terkenal di Pantai Angsana.',
   ),
   Destination(
-    name: 'Danan Seran',
+    name: 'Danau Seran',
     category: 'Alam',
     location: 'Banjarbaru',
     rating: '4.4',
-    imageUrl: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/danau_seran.webp',
     description: 'Temukan suasana tenang di danau biru jernih dengan pulau kecil yang ditumbuhi pepohonan pinus di tengahnya.',
   ),
   Destination(
@@ -115,7 +115,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Loksado, Hulu Sungai Selatan',
     rating: '4.8',
-    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/bukit_langara.jpg',
     description: 'Jelajahi perbukitan hijau dan nikmati panorama alam Loksado dari berbagai titik pandang di Bukit Langara.',
   ),
   Destination(
@@ -123,7 +123,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Loksado, Hulu Sungai Selatan',
     rating: '4.7',
-    imageUrl: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/haratai.png',
     description: 'Nikmati kesegaran air terjun yang mengalir di tengah hutan tropis Loksado.',
   ),
   Destination(
@@ -131,7 +131,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Tiwingan Lama, Kabupaten Banjar',
     rating: '4.6',
-    imageUrl: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/bukit_batu.jpg',
     description: 'Temukan formasi bebatuan dan pemandangan alam terbuka di kawasan Tiwingan Lama.',
   ),
   Destination(
@@ -139,7 +139,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Pelaihari, Tanah Laut',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/bajuin.jpg',
     description: 'Susuri suasana hijau dan sejuk menuju air terjun yang berada di kawasan Bajuin.',
   ),
   Destination(
@@ -147,7 +147,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Karang Intan, Kabupaten Banjar',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/bukit_mawar.jpg',
     description: 'Nikmati udara segar dan pemandangan perbukitan dari kawasan Karang Intan.',
   ),
   Destination(
@@ -155,7 +155,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Hatungun, Tapin',
     rating: '4.4',
-    imageUrl: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/batu_hapu.jpg',
     description: 'Jelajahi gua dengan formasi batuan alami yang menyimpan pesona alam Hatungun.',
   ),
   Destination(
@@ -163,15 +163,15 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Pelaihari, Tanah Laut',
     rating: '4.3',
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/pantai_takisung.jpeg',
     description: 'Habiskan waktu menikmati suasana pesisir dan bentang laut di Pantai Takisung.',
   ),
   Destination(
-    name: 'Pantai Batakan New Look',
+    name: 'Pantai Batakan Baru',
     category: 'Alam',
     location: 'Panyipatan, Tanah Laut',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/batakan_baru.jpg',
     description: 'Nikmati suasana pantai yang tertata dengan hamparan pasir dan pemandangan laut di Panyipatan.',
   ),
   Destination(
@@ -179,7 +179,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Jorong, Tanah Laut',
     rating: '4.4',
-    imageUrl: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/swarangan.jpeg',
     description: 'Bersantai di pesisir Jorong sambil menikmati debur ombak dan suasana Pantai Swarangan.',
   ),
   Destination(
@@ -187,7 +187,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Kusan Hilir, Tanah Bumbu',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/pantai_pagatan.jpg',
     description: 'Jelajahi pesisir Kusan Hilir dan nikmati suasana pantai di kawasan Pagatan.',
   ),
   Destination(
@@ -195,15 +195,15 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Simpang Empat, Tanah Bumbu',
     rating: '4.6',
-    imageUrl: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/pulau_burung.jpg',
     description: 'Nikmati pemandangan pulau dan suasana bahari yang tenang di kawasan Simpang Empat.',
   ),
   Destination(
-    name: 'Pasar Terapung Kuin / Siring Piere Tendean',
+    name: 'Pasar Terapung Kuin',
     category: 'Budaya',
     location: 'Banjarmasin',
     rating: '4.7',
-    imageUrl: 'https://images.unsplash.com/photo-1540611025311-01df3cef54b5?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/pasar_terapung_kuin.jpg',
     description: 'Saksikan kehidupan sungai Banjarmasin dan tradisi pasar terapung yang berlangsung di atas jukung.',
   ),
   Destination(
@@ -211,7 +211,7 @@ const _destinations = <Destination>[
     category: 'Sejarah',
     location: 'Astambul, Kabupaten Banjar',
     rating: '4.9',
-    imageUrl: 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/datu_kalampaya.jpg',
     description: 'Kunjungi tempat peristirahatan ulama besar Syekh Muhammad Arsyad Al-Banjari di Kalampayan.',
   ),
   Destination(
@@ -219,7 +219,7 @@ const _destinations = <Destination>[
     category: 'Sejarah',
     location: 'Tatakan, Tapin',
     rating: '4.8',
-    imageUrl: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/makam_datu_sanggul.jpg',
     description: 'Kenali salah satu situs ziarah bersejarah di kawasan Tatakan, Kabupaten Tapin.',
   ),
   Destination(
@@ -227,23 +227,15 @@ const _destinations = <Destination>[
     category: 'Sejarah',
     location: 'Banjarbaru',
     rating: '4.6',
-    imageUrl: 'https://images.unsplash.com/photo-1566127992631-137a642a90f4?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/museum_unlam.jpg',
     description: 'Jelajahi koleksi museum yang mengenalkan sejarah, budaya, dan kehidupan masyarakat Kalimantan Selatan.',
-  ),
-  Destination(
-    name: 'Pendulangan Intan Cempaka',
-    category: 'Budaya',
-    location: 'Cempaka, Banjarbaru',
-    rating: '4.4',
-    imageUrl: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85',
-    description: 'Kenali tradisi pendulangan intan dan kehidupan para pendulang di kawasan Cempaka.',
   ),
   Destination(
     name: 'Candi Agung Amuntai',
     category: 'Sejarah',
     location: 'Amuntai, Hulu Sungai Utara',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/candi_agung_amuntai.jpg',
     description: 'Telusuri peninggalan arkeologi Candi Agung dan kisah sejarah dari kawasan Amuntai.',
   ),
   Destination(
@@ -251,7 +243,7 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Banjarbaru',
     rating: '4.5',
-    imageUrl: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/hutan_pinus_mentaos.jpg',
     description: 'Luangkan waktu di ruang hijau kota yang rindang untuk berjalan santai dan menikmati suasana alam.',
   ),
   Destination(
@@ -259,24 +251,24 @@ const _destinations = <Destination>[
     category: 'Alam',
     location: 'Tambang Ulang, Tanah Laut',
     rating: '4.4',
-    imageUrl: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/labirin_pelaihari.png',
     description: 'Jelajahi taman dengan jalur labirin hijau yang seru untuk aktivitas bersama keluarga.',
-  ),
-  Destination(
-    name: 'Kawasan Rawa Paminggir',
-    category: 'Alam',
-    location: 'Paminggir, Hulu Sungai Utara',
-    rating: '4.7',
-    imageUrl: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85',
-    description: 'Nikmati bentang rawa yang luas dan suasana perairan alami di kawasan Paminggir.',
   ),
   Destination(
     name: 'Taman Siring Nol Kilometer',
     category: 'Budaya',
     location: 'Banjarmasin',
     rating: '4.6',
-    imageUrl: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=85',
+    imageUrl: 'assets/images/taman_siring_nolkm.jpg',
     description: 'Bersantai di ruang publik tepi sungai yang menjadi salah satu titik berkumpul warga Banjarmasin.',
+  ),
+  Destination(
+    name: 'Warung "Dina" Wasaka',
+    category: 'Kuliner',
+    location: 'Banjarbaru',
+    rating: '2.9',
+    imageUrl: 'assets/images/wasaka.png',
+    description: 'Nikmati berbagai hidangan lezat di warung "Dina" Wasaka yang terletak di Banjarbaru.',
   ),
 ];
 
